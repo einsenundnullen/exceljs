@@ -47,7 +47,13 @@ See [FORK.md](FORK.md) for detailed tracking of upstream PRs.
 
 ## Commercial Support
 
-Commercial support, consulting, and priority bug fixes are available for organizations using ExcelJS in production. Contact: [pieter@protobi.com](mailto:pieter@protobi.com)
+This is our fork with features we need. Use at your own risk. 
+We maintain what we require and share the code publicly in case it's useful to others.
+
+That said, we've put a fair bit of time to understanding ExcelJS.
+If there are features or bug fixes that are important to your business, 
+we can offer professional support for consulting, and priority bug fixes. 
+Contact: [info@protobi.com](mailto:info@protobi.com)
 
 ---
 
