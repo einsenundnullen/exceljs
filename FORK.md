@@ -10,7 +10,60 @@ Upstream exceljs has 100+ open PRs, some over a year old. We needed these fixes 
 3. Published to npm for community benefit
 4. **Submitted all changes back to upstream**
 
-**🎯 Goal:** Sunset this fork once upstream merges our contributions.
+** Goal:** Sunset this fork once upstream merges our contributions.
+
+---
+
+## Fork Release History
+
+### 4.4.0-protobi.5 (2025-12-06)
+
+**Security & Dependency Updates**
+
+**Production Dependencies:**
+- `archiver`: ^5.0.0 → ^5.3.2
+- `unzipper`: 0.10.11 → 0.12.3
+
+**Dev Dependencies (Major Updates):**
+- `mocha`: ^7.2.0 → ^11.7.5 (fixes ReDoS in debug, js-yaml, minimatch)
+- `chai-xml`: ^0.3.2 → ^0.4.1 (fixes xml2js prototype pollution)
+- `got`: ^9.0.0 → ^11.8.6 (downgraded from 14 for test compatibility)
+- `eslint`: ^6.5.1 → ^9.39.1
+- `grunt-contrib-jasmine`: ^2.2.0 → ^4.0.0
+- `prettier-eslint`: ^11.0.0 → ^16.4.2
+- `prettier-eslint-cli`: ^5.0.0 → ^8.0.1
+
+**Security Improvements:**
+- Reduced npm audit vulnerabilities from 38 → 15 
+- All remaining vulnerabilities are in dev/test dependencies only
+- No production code security issues
+
+**Testing:**
+- ✅ Unit tests: 883 passing, 1 pending
+- ✅ Integration tests: 198 passing
+- ✅ End-to-end tests: 1 passing
+- ✅ Build: Successful
+- ⚠️ Browser tests: Disabled (puppeteer@19 compatibility issues)
+
+**Known Limitations:**
+- `glob@7.x` remains in dependency tree (deprecated but no active CVEs)
+  - Only affects glob 10.x-11.x CLI (CVE-2025-64756), not 7.x library API
+  - Upgrading to archiver 7.x requires StreamBuf refactoring (_read/_write methods)
+- Browser tests disabled via `.disable-test-browser` (puppeteer hangs)
+- `got` kept at v11 instead of v14 due to breaking API changes in end-to-end tests
+
+**Related Issues:**
+- [#11](https://github.com/protobi/exceljs/issues/11) - npm audit vulnerabilities (protobi fork)
+- [#2984](https://github.com/exceljs/exceljs/issues/2984) - Security vulnerabilities in transitive dependencies (upstream)
+- [#3006](https://github.com/exceljs/exceljs/issues/3006) - glob 7.x dependency discussion (upstream)
+
+**Commits:** f8e3e47, 9c0f259, 0d57c7b, 639922f
+
+---
+
+### 4.4.0-protobi.4 (2025-11)
+
+Multiple pivot tables support, pivot table count metric, streaming limitations documented.
 
 ---
 
@@ -42,7 +95,7 @@ Upstream exceljs has 100+ open PRs, some over a year old. We needed these fixes 
 
 **Status:** All original contributions submitted, waiting for upstream review
 
-### 🤝 Community Fork Contributions (Adopted & Submitted)
+###  Community Fork Contributions (Adopted & Submitted)
 
 | Feature/Fix | Our Issue | Source | Upstream PR | Status | Date |
 |-------------|-----------|--------|-------------|--------|------|
@@ -50,7 +103,7 @@ Upstream exceljs has 100+ open PRs, some over a year old. We needed these fixes 
 
 **Status:** Adopted from community fork, submitted to upstream
 
-### 🔒 Security & Maintenance
+###  Security & Maintenance
 
 | Feature/Fix | Our Issue | Upstream PR | Status |
 |-------------|-----------|-------------|--------|
@@ -163,7 +216,7 @@ worksheet.addPivotTable({
   rows: ['Category'],
   columns: ['Region'],
   values: ['Sales'],
-  metric: 'count', // 🎯 NEW!
+  metric: 'count', //  NEW!
 });
 ```
 

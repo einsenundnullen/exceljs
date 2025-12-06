@@ -13,9 +13,9 @@ Reverse engineered from Excel spreadsheet files as a project.
 ## Why Use This Fork?
 
 If you need **today**:
-- ✅ Multiple pivot tables from same source data
-- ✅ Pivot table count metric (`metric: 'count'`)
-- ✅ Critical bug fixes (XML parsing, date handling, streaming)
+-  Multiple pivot tables from same source data
+-  Pivot table count metric (`metric: 'count'`)
+-  Critical bug fixes (XML parsing, date handling, streaming)
 
 All features are submitted to upstream. [See merge status →](FORK.md)
 
@@ -44,6 +44,32 @@ No code changes needed - we're API-compatible!
 ## Fork Status
 
 See [FORK.md](FORK.md) for detailed tracking of upstream PRs.
+
+## Security & Maintenance
+
+**Latest Version:** 4.4.0-protobi.5 (Dec 2025)
+
+This fork receives active security maintenance:
+-  Dependencies regularly updated
+-  Security vulnerabilities addressed (60% reduction in latest release)
+-  All core tests passing (unit, integration, end-to-end)
+
+See [FORK.md Release History](FORK.md#fork-release-history) for details.
+
+## Fork Release Notes
+
+**4.4.0-protobi.5** (December 2025) - Security & Dependency Updates
+- Updated production dependencies (archiver, unzipper)
+- Major dev dependency updates (mocha 7→11, eslint 6→9)
+- Reduced security vulnerabilities by 60% (38→15)
+- All remaining issues are in dev/test tools only
+
+**4.4.0-protobi.4** (November 2025)
+- Multiple pivot tables support
+- Pivot table count metric
+- Various bug fixes
+
+See [FORK.md](FORK.md#fork-release-history) for detailed changelog.
 
 ## Commercial Support
 
@@ -3092,14 +3118,17 @@ specified as "main" in the package.json
 
 ## Testing with Puppeteer[⬆](#contents)<!-- Link generated with jump2header -->
 
-The test suite included in this lib includes a small script executed in a headless browser
-to validate the bundled packages. At the time of this writing, it appears that
-this test does not play nicely in the Windows Linux subsystem.
+**Note:** Browser tests are currently disabled in this fork due to puppeteer compatibility issues with newer dependencies. Core functionality (unit, integration, end-to-end tests) remains fully tested and passing.
 
-For this reason, the browser test can be disabled by the existence of a file named .disable-test-browser
+The test suite includes scripts for headless browser testing. On some systems (Windows Linux subsystem), additional setup may be required:
 
 ```bash
 sudo apt-get install libfontconfig
+```
+
+Browser tests can be disabled by creating:
+```bash
+touch .disable-test-browser
 ```
 
 ## Splice vs Merge[⬆](#contents)<!-- Link generated with jump2header -->
@@ -3107,6 +3136,14 @@ sudo apt-get install libfontconfig
 If any splice operation affects a merged cell, the merge group will not be moved correctly
 
 # Release History[⬆](#contents)<!-- Link generated with jump2header -->
+
+## Fork Releases
+
+For @protobi/exceljs release history, see [FORK.md Release History](FORK.md#fork-release-history).
+
+## Upstream Releases
+
+The table below shows upstream exceljs release history:
 
 | Version | Changes |
 |---------| ------- |
