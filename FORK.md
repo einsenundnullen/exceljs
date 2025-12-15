@@ -12,9 +12,39 @@ Upstream exceljs has 100+ open PRs, some over a year old. We needed these fixes 
 
 ** Goal:** Sunset this fork once upstream merges our contributions.
 
+## Development Workflow
+
+This repository uses [Claude Code](https://claude.com/claude-code) to accelerate development and maintenance:
+
+- **Issue Triage & Analysis**: Review and investigate bug reports and feature requests
+- **Pull Request Evaluation**: Assess upstream PRs for adoption into this fork
+- **Test Development**: Create and maintain unit tests, integration tests, and end-to-end tests
+- **Code Implementation**: Plan and execute bug fixes, feature additions, and refactoring
+- **Release Management**: Version bumping, changelog updates, and npm publishing
+
+This AI-assisted workflow enables rapid response to community issues while maintaining code quality through comprehensive test coverage.
+
 ---
 
 ## Fork Release History
+
+### 4.4.0-protobi.6 (2025-12-14)
+
+**Security Fix**
+
+- Fixed Content Security Policy (CSP) violation in Vite builds ([#28](https://github.com/protobi/exceljs/issues/28))
+- Added npm overrides to force `asn1.js@5.4.1` (removes eval usage)
+- Dependency chain: `browserify` → `crypto-browserify` → `browserify-sign` → `parse-asn1` → `asn1.js`
+- Verified zero `eval()` calls in all browser bundles
+- Browser builds now CSP-compliant for modern build tools (Vite, Webpack 5+)
+
+**Testing:**
+- All existing tests passing
+- Verified dist bundles contain no eval/runInThisContext calls
+
+**Commits:** 2f6f8b6, 8d106d5
+
+---
 
 ### 4.4.0-protobi.5 (2025-12-06)
 
@@ -320,11 +350,29 @@ npm test
 npm run test:integration -- --grep "Pivot Tables"
 ```
 
-**Test coverage:**
-- ✅ All upstream tests (197 passing)
-- ✅ Pivot table count metric tests
-- ✅ Multiple pivot tables tests
-- ✅ Table addRow() workflow tests
+### Test Updates vs Upstream
+
+**New Test Files Added:**
+- `spec/integration/workbook/pivot-tables-with-count.spec.js` (78 lines)
+  - Tests pivot table with `metric: 'count'` feature
+  - Validates XML generation for count aggregation
+
+- `spec/integration/issues/issue-1804-add-image.spec.js` (53 lines)
+  - Tests image reuse fix (PR #2876)
+  - Validates same image added multiple times maintains correct references
+
+**Test Infrastructure Changes:**
+- Browser tests disabled (puppeteer compatibility issues with updated dependencies)
+- Dev test dependencies updated: mocha 7→11, chai-xml 0.3→0.4
+- End-to-end tests: got API updated (v9→v11)
+
+**Test Results:**
+- Unit tests: 883 passing, 1 pending (unchanged from upstream)
+- Integration tests: 198 passing (includes 2 new tests above)
+- End-to-end tests: 1 passing
+- Browser tests: Skipped via `.disable-test-browser`
+
+**Note:** Fork maintains all upstream tests + adds specific tests for adopted PR features. No upstream tests were removed or modified.
 
 ---
 
