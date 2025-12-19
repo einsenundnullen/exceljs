@@ -41,7 +41,6 @@ Update #4 Fix XML special character escaping in pivot tables
 
 Detailed description of what was changed and why.
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 **Why:**
@@ -242,7 +241,6 @@ Release v4.4.0-protobi.2: Add feature X
 - Detailed description
 - Reference issues: #1, #2
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 **For features:**
@@ -251,7 +249,6 @@ Add support for multiple pivot tables (#1)
 
 [Detailed explanation]
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 **For upstream PRs:**
@@ -261,7 +258,6 @@ Adopt upstream PR #2850: [Feature name]
 [Why we're adopting this]
 Original PR: https://github.com/exceljs/exceljs/pull/2850
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
 ```
 
 ## Testing Before Release
