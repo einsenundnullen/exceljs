@@ -1895,6 +1895,10 @@ export interface Table extends Required<TableProperties> {
 	 */
 	addRow: (values: any[], rowNumber?: number) => void
 	/**
+	 * Add multiple rows of data, either insert at rowNumber or append
+	 */
+	addRows: (rows: any[][], rowNumber?: number) => void
+	/**
 	 * Get column
 	 */
 	getColumn: (colIndex: number) => TableColumn
